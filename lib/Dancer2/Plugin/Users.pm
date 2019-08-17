@@ -1,6 +1,6 @@
 package Dancer2::Plugin::Users;
 
-our $VERSION = '0.9902';
+our $VERSION = '0.9903';
 
 use Dancer2::Plugin::Memberships;
 

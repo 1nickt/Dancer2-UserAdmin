@@ -1,6 +1,6 @@
 package Dancer2::Plugin::Memberships;
 
-our $VERSION = '0.9902';
+our $VERSION = '0.9903';
 
 use Moo;
 

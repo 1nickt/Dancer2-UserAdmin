@@ -1,6 +1,6 @@
 package Dancer2::UserAdmin;
 
-our $VERSION = '0.9901';
+our $VERSION = '0.9902';
 
 use Moo;
 

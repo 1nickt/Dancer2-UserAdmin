@@ -1,6 +1,6 @@
-package TestApp;
+package ExampleApp;
 
-our $VERSION = '0.9901';
+our $VERSION = '0.9903';
 
 use Dancer2;
 use Dancer2::UserAdmin;

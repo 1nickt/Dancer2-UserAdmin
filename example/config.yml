@@ -1,4 +1,17 @@
-appname: ExampleApp
-charset: UTF-8
-log:     debug
-logger:  console
+appname : ExampleApp
+charset : UTF-8
+log     : core
+logger  : console
+
+plugins :
+    DBIC :
+        users :
+            dsn          : dbi:SQLite:dbname=UserAdmin.db
+            schema_class : ExampleApp::Schema
+
+route_handlers :
+    -
+        - UserAdmin
+        - 1
+
+user_admin : 1

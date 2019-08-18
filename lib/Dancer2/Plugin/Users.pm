@@ -2,9 +2,12 @@ package Dancer2::Plugin::Users;
 
 our $VERSION = '0.9903';
 
-use Dancer2::Plugin::Memberships;
+use Dancer2::Plugin;
+use Dancer2::Plugin::DBIC;
 
-use Moo;
+plugin_keywords(qw/
+    user_create
+/);
 
 1; # return true
 

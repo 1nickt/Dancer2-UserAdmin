@@ -1,0 +1,10 @@
+<HTML>
+  <HEAD>
+    <TITLE>Registration successful</TITLE>
+  </HEAD>
+  <BODY>
+    <H2>Thank you for registering as a user of this site</H2>
+
+    Your user profile can be accessed <A HREF='/user/profile'>here.
+  </BODY>
+</HTML>

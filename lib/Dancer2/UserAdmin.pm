@@ -2,9 +2,9 @@ package Dancer2::UserAdmin;
 
 our $VERSION = '0.9903';
 
-use Dancer2::Plugin::Users;
-use Dancer2::Plugin::Memberships;
-#use Dancer2::User;
+use Moo::Role;
+
+with 'Dancer2::UserAdmin::User';
 
 1; # return true
 

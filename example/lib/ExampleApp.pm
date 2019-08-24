@@ -1,10 +1,10 @@
-package ExampleApp;
-
-use Dancer2;
-use Dancer2::UserAdmin;
-
-get '/' => sub {
-	return 'Hello, world';  
+package ExampleApp {
+	use Dancer2;
+	use Dancer2::Plugin::UserAdmin;
+	
+	get '/' => sub {
+		return 'Hello, world';  
+	};
 };
 
 1;

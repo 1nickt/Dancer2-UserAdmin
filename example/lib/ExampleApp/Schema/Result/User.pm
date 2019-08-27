@@ -217,9 +217,24 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 roles
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-08-17 21:21:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:0gB+Bz3P2svFeUNP91A32A
+Type: has_many
+
+Related object: L<ExampleApp::Schema::Result::Role>
+
+=cut
+
+__PACKAGE__->has_many(
+  "roles",
+  "ExampleApp::Schema::Result::Role",
+  { "foreign.user_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-08-27 00:35:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OcEiZzq5EDX+M9iNI2HOcg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

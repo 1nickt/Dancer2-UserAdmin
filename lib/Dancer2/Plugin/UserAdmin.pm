@@ -2,45 +2,40 @@ package Dancer2::Plugin::UserAdmin;
 
 our $VERSION = '0.9903';
 
-use File::Share 'dist_dir';
 use Method::Signatures;
 use Dancer2::Plugin;
-use Dancer2::Template::Tiny;
-#use namespace::clean;
 
-with 'Dancer2::UserAdmin';
-
-has _tt => (
-    is      => 'ro',
-    default => sub { Dancer2::Template::Tiny->new },
-);
-
-method _template ($view, $vars=+{}) {
-    my $template = path( dist_dir('Dancer2-Plugin-UserAdmin'), 'views', $view );
-    $self->_tt->render( $template, $vars );
-}
-
-method BUILD (...) {
+sub BUILD {
+    my $self = shift;
     my $app = $self->app;
 
-    # New user registration
+#    $app->register_plugin(Dancer2::Plugin::Auth::Extensible->new(
+#        app    => $app,
+#        realms => [{ name => 'users', provider => 'DBIC', %{ $app->config->{UserAdmin}{auth} } }],
+#    ));
+
+    # user registration form
     $app->add_route(
         method => 'get',
-        regexp => qr!^ /user/register $!x,
-        code   => sub {
-            my $app = shift;
-            $self->_template('user_admin/register-form.tt');
-        },
+        regexp => '/register',
+        code   => sub { $_[0]->template('user_admin/register-form.tt') },
     );
 
     $app->add_route(
         method => 'post',
-        regexp => qr!^ /user/register $!x,
+        regexp => '/register',
         code   => sub {
             my $app = shift;
-            $self->register_current_user;
+            $app->template('user_admin/register-form.tt');
         },
     );
+
+
+}
+
+method _render_template ($view, $tokens={}) {
+    my $template = path( dist_dir('Dancer2-Plugin-UserAdmin'), 'views', $view );
+     $self->_tt->render( $template, $tokens );
 }
 
 1;

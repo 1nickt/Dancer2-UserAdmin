@@ -1,14 +1,55 @@
-appname : ExampleApp
-charset : UTF-8
-log     : debug
-logger  : console
+appname     : ExampleApp
+charset     : UTF-8
+log         : debug
+logger      : console
+template    : template_toolkit
+layout      : main
+show_errors : 1
+
+engines :
+    template :
+        template_toolkit :
+            ENCODING : utf8
+
+    session :
+        Redis :
+            cookie_name      : session_id
+            cookie_duration  : 86400
+            session_duration : 86400
+            is_secure        : 0
+            is_http_only     : 1
+            redis_server     : localhost:6379
 
 plugins :
-    UserAdmin :
-        foo : bar
+    Debugger :
+        enabled : 1
 
-DBIC :
-  UserAdmin :
-        dsn          : dbi:SQLite:dbname=UserAdmin.db
-        schema_class : ExampleApp::Schema
+    DBIC :
+        UserAdmin:
+            dsn          : dbi:SQLite:dbname=/Users/1nickt/dev/Dancer2-UserAdmin/example/etc/UserAdmin.db
+            schema_class : ExampleApp::Schema
 
+    Auth::Extensible :
+        realms :
+            users :
+                provider : DBIC
+                user_as_object         : 1
+                users_resultset        : User
+                roles_resultset        : RoleType
+                user_roles_resultset   : Role
+                users_username_column  : username
+                users_password_column  : passphrase
+                roles_role_column      : name
+
+                reset_password_handler : 1
+                login_without_redirect : 1
+                user_home_page         : /user
+                exit_page              : /
+                mailer                 :
+                    module    : Mail::Message # Email module to use
+                    mail_from : '"App name" <myapp@example.com>' # From email address
+                    options   :              # Options for module
+                        via : sendmail     # Options passed to $msg->send
+
+
+    UserAdmin : 1

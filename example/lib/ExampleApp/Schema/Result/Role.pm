@@ -113,21 +113,6 @@ __PACKAGE__->add_unique_constraint("user_id_type_id_unique", ["user_id", "type_i
 
 =head1 RELATIONS
 
-=head2 roles
-
-Type: has_many
-
-Related object: L<ExampleApp::Schema::Result::Role>
-
-=cut
-
-__PACKAGE__->has_many(
-  "roles",
-  "ExampleApp::Schema::Result::Role",
-  { "foreign.user_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
-
 =head2 type
 
 Type: belongs_to
@@ -147,20 +132,20 @@ __PACKAGE__->belongs_to(
 
 Type: belongs_to
 
-Related object: L<ExampleApp::Schema::Result::Role>
+Related object: L<ExampleApp::Schema::Result::User>
 
 =cut
 
 __PACKAGE__->belongs_to(
   "user",
-  "ExampleApp::Schema::Result::Role",
+  "ExampleApp::Schema::Result::User",
   { id => "user_id" },
   { is_deferrable => 0, on_delete => "NO ACTION", on_update => "NO ACTION" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-08-17 21:21:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qNhIjyRBXde6zvvOfuOTKg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-08-27 00:35:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:He3m3MExf5ut5pM2AXeWHA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

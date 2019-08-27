@@ -1,0 +1,4 @@
+<P>
+  <br>
+  <center><pre><strong>hello, [% username %]</strong></pre></center>
+</P>

@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS role(
 		DATETIME,
 
 	FOREIGN KEY (user_id)
-		REFERENCES role (id),
+		REFERENCES user (id),
 
 	FOREIGN KEY (type_id)
 		REFERENCES role_type (id)

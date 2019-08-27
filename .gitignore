@@ -1,4 +1,5 @@
 /Dancer2-UserAdmin*
+example/etc/UserAdmin.db
 
 *.bak
 !Build/

@@ -1,0 +1,59 @@
+    <h2>Register as a user of [% vars.site_name %]</h2>
+
+    <form method='post' action='/register'>
+      <table cellpadding=4>
+        <tr>
+          <td>
+            <label for='email'>Email address</label>
+          </td>
+          <td>
+            <input type='text' name='email'>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for='email_confirm'>Confirm email address</label>
+          </td>
+          <td>
+            <input type='text' name='email_confirm'>
+          </td>
+        </tr>
+        <tr>
+          <td>    
+            <label for='first_name'>First name</label>
+          </td>
+          <td>
+            <input type='text' name='first_name'>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for='last_name'>Last name</label>
+          </td>
+          <td>
+            <input type='text' name='last_name'>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for='password'>Password</label>
+          </td>
+          <td>
+            <input type='password' name='password'>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for='password_confirm'>Confirm password</label>
+          </td>
+          <td>
+            <input type='password' NAME='password_confirm'>
+          </td>
+        </tr>
+        <tr>
+          <td colspan=2>
+            <input type='submit' value='Register'>
+          </td>
+        </tr>
+      </table>
+    </form>

@@ -3,7 +3,25 @@ package Dancer2::Plugin::UserAdmin;
 our $VERSION = '0.9903';
 
 use Method::Signatures;
+use File::Share 'dist_dir';
+use Dancer2::FileUtils 'path';
 use Dancer2::Plugin;
+
+has site_name => (
+    is             => 'ro',
+    from_config    => 1,
+    default        => 'this site',
+    plugin_keyword => 1,
+);
+
+after BUILD => sub {
+    my $site_name = $_[0]->site_name;
+    my $dsl = $_[0]->dsl;
+    $_[0]->app->add_hook( Dancer2::Core::Hook->new(
+        name => 'before',
+        code => sub { $dsl->var(site_name => $site_name) },
+    ));
+};
 
 sub BUILD {
     my $self = shift;
@@ -18,7 +36,7 @@ sub BUILD {
     $app->add_route(
         method => 'get',
         regexp => '/register',
-        code   => sub { $_[0]->template('user_admin/register-form.tt') },
+        code   => sub { $self->_render_template('register.tt') },
     );
 
     $app->add_route(
@@ -26,7 +44,7 @@ sub BUILD {
         regexp => '/register',
         code   => sub {
             my $app = shift;
-            $app->template('user_admin/register-form.tt');
+            $app->template('user_admin/register.tt');
         },
     );
 
@@ -35,7 +53,7 @@ sub BUILD {
 
 method _render_template ($view, $tokens={}) {
     my $template = path( dist_dir('Dancer2-Plugin-UserAdmin'), 'views', $view );
-     $self->_tt->render( $template, $tokens );
+    return $self->app->template( $template, $tokens );
 }
 
 1;

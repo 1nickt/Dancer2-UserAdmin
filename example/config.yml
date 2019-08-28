@@ -52,4 +52,5 @@ plugins :
                         via : sendmail     # Options passed to $msg->send
 
 
-    UserAdmin : 1
+    UserAdmin :
+        site_name : Frobnicators, LLC
